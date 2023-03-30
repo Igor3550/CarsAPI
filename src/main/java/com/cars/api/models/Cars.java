@@ -1,15 +1,27 @@
 package com.cars.api.models;
 
+import com.cars.api.dto.CarsDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Cars {
+
+  public Cars(CarsDTO req) {
+    this.modelo = req.modelo();
+    this.fabricante = req.fabricante();
+    this.dataFabricacao = req.dataFabricacao();
+    this.valor = req.valor();
+    this.anoModelo = req.anoModelo();
+  }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
